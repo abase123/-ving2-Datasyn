@@ -51,7 +51,7 @@ class BaseTrainer:
 
     def train(
             self,
-            num_epochs: int):
+            num_epochs: int,patience = 50):
         """
         Training loop for model.
         Implements stochastic gradient descent with num_epochs passes over the train dataset.
@@ -71,7 +71,8 @@ class BaseTrainer:
             loss={},
             accuracy={}
         )
-
+        not_improving = 0
+        best_valueting_loss = float("inf")
         global_step = 0
         for epoch in range(num_epochs):
             train_loader = utils.batch_loader(
@@ -88,5 +89,13 @@ class BaseTrainer:
                     val_history["loss"][global_step] = val_loss
                     val_history["accuracy"][global_step] = accuracy_val
                     # TODO: Implement early stopping (copy from last assignment)
+                    if val_loss < best_valueting_loss:
+                        best_valueting_loss = val_loss
+                        not_improving = 0
+                    else:
+                        not_improving += 1
+                        if not_improving >= patience:
+                            print("Early stopping at", global_step)
+                            return train_history, val_history
                 global_step += 1
         return train_history, val_history

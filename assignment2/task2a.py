@@ -14,7 +14,16 @@ def pre_process_images(X: np.ndarray):
     assert X.shape[1] == 784,\
         f"X.shape[1]: {X.shape[1]}, should be 784"
     # TODO implement this function (Task 2a)
-    return X
+
+    mean = np.mean(X)
+    std = np.std(X)
+
+    X_norm = (X-mean)/std
+    X_train, _, _, _ = utils.load_full_mnist()
+    bias = np.ones((X_norm.shape[0], 1))
+    X_norm = np.hstack((X_norm, bias))
+
+    return X_norm
 
 
 def cross_entropy_loss(targets: np.ndarray, outputs: np.ndarray):
@@ -28,7 +37,11 @@ def cross_entropy_loss(targets: np.ndarray, outputs: np.ndarray):
     assert targets.shape == outputs.shape,\
         f"Targets shape: {targets.shape}, outputs: {outputs.shape}"
     # TODO: Implement this function (copy from last assignment)
-    raise NotImplementedError
+    neg_lik = np.sum(targets * np.log(outputs), axis=1)
+    loss = -np.mean(neg_lik)
+
+    return loss
+
 
 
 class SoftmaxModel:
@@ -43,18 +56,19 @@ class SoftmaxModel:
         # Always reset random seed before weight init to get comparable results.
         np.random.seed(1)
         # Define number of input nodes
-        self.I = None
+        self.I = 785
         self.use_improved_sigmoid = use_improved_sigmoid
         self.use_relu = use_relu
         self.use_improved_weight_init = use_improved_weight_init
-
+        self.hidden_layer_output = []
+        self.z = []
         # Define number of output nodes
         # neurons_per_layer = [64, 10] indicates that we will have two layers:
         # A hidden layer with 64 neurons and a output layer with 10 neurons.
         self.neurons_per_layer = neurons_per_layer
 
         # Initialize the weights
-        self.ws = []
+        self.ws = [np.random.uniform(-1,1, (785,64)), np.random.uniform(-1,1, (64,10))]
         prev = self.I
         for size in self.neurons_per_layer:
             w_shape = (prev, size)
@@ -74,7 +88,21 @@ class SoftmaxModel:
         # TODO implement this function (Task 2b)
         # HINT: For performing the backward pass, you can save intermediate activations in variables in the forward pass.
         # such as self.hidden_layer_output = ...
-        return None
+
+        z1 = np.dot(X, self.ws[0])
+
+        sigmoid = 1 / (1 + np.exp(z1))
+        self.z.append(z1)
+        self.hidden_layer_output.append(X)
+
+
+        z2 = np.dot(sigmoid, self.ws[1])
+        #self.z.append(z2)
+        z2 = z2 - np.max(z2, axis=1, keepdims=True)  # subtract max for stability
+        output = np.exp(z2) / np.sum(np.exp(z2), axis=1, keepdims=True)
+        self.hidden_layer_output.append(sigmoid)
+        return output
+
 
     def backward(self, X: np.ndarray, outputs: np.ndarray,
                  targets: np.ndarray) -> None:
@@ -87,11 +115,31 @@ class SoftmaxModel:
             targets: labels/targets of each image of shape: [batch size, num_classes]
         """
         # TODO implement this function (Task 2b)
+        self.grads = []
+
+        batch_size = X.shape[0]
+        delta = outputs - targets
+        dw2 = np.dot(self.hidden_layer_output[-1].T, delta)
+
+
+        sigmoid = 1/(1+np.exp(-self.z[-1]))
+        der_sig = sigmoid*(1-sigmoid)
+        delta1 = np.dot(delta, self.ws[-1].T)*der_sig
+
+        dw1 = np.dot(X.T, delta1)
+
+        self.grads.append(dw1/batch_size)
+        self.grads.append(dw2/batch_size)
+
+
+
+
+
         assert targets.shape == outputs.shape,\
             f"Output shape: {outputs.shape}, targets: {targets.shape}"
         # A list of gradients.
         # For example, self.grads[0] will be the gradient for the first hidden layer
-        self.grads = []
+
         for grad, w in zip(self.grads, self.ws):
             assert grad.shape == w.shape,\
                 f"Expected the same shape. Grad shape: {grad.shape}, w: {w.shape}."
@@ -109,7 +157,9 @@ def one_hot_encode(Y: np.ndarray, num_classes: int):
         Y: shape [Num examples, num classes]
     """
     # TODO: Implement this function (copy from last assignment)
-    raise NotImplementedError
+    one_hot = np.eye(num_classes)[Y.flatten()]
+    return one_hot
+
 
 
 def gradient_approximation_test(

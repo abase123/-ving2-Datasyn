@@ -1,3 +1,4 @@
+import random
 from typing import Generator
 import mnist
 import numpy as np
@@ -6,7 +7,7 @@ import matplotlib.pyplot as plt
 
 def batch_loader(
         X: np.ndarray, Y: np.ndarray,
-        batch_size: int, shuffle=False,
+        batch_size: int, shuffle=True,
         drop_last=True) -> Generator:
     """
     Creates a batch generator over the whole dataset (X, Y) which returns a generator iterating over all the batches.
@@ -26,6 +27,11 @@ def batch_loader(
     indices = list(range(len(X)))
 
     # TODO (copy from last assignment) implement dataset shuffling here.
+    if shuffle:
+        indices = list(range(len(X)))
+        random.shuffle(indices)
+    else:
+        indices = list(range(len(X)))
 
     for i in range(num_batches):
         # select a set of indices for each batch of samples
