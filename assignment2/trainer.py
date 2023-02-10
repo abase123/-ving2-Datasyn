@@ -23,6 +23,8 @@ class BaseTrainer:
         self.batch_size = batch_size
         self.model = model
         self.shuffle_dataset = shuffle_dataset
+        self.counter=0
+        self.min_val_loss=np.inf
 
     def validation_step(self):
         """
@@ -48,6 +50,17 @@ class BaseTrainer:
             loss value (float) on batch
         """
         pass
+    
+        
+    def earlyStopp(self,val_loss):
+        if(val_loss <self.min_val_loss):
+            self.min_val_loss=val_loss
+            self.counter=0
+        elif val_loss > self.min_val_loss:
+            self.counter+=1
+            if(self.counter == 50):
+                return True
+        return False
 
     def train(
             self,
@@ -89,13 +102,10 @@ class BaseTrainer:
                     val_history["loss"][global_step] = val_loss
                     val_history["accuracy"][global_step] = accuracy_val
                     # TODO: Implement early stopping (copy from last assignment)
-                    if val_loss < best_valueting_loss:
-                        best_valueting_loss = val_loss
-                        not_improving = 0
-                    else:
-                        not_improving += 1
-                        if not_improving >= patience:
-                            print("Early stopping at", global_step)
-                            return train_history, val_history
+                    if(self.earlyStopp(val_loss)==True):
+                        print("Stopped at ")
+                        print(epoch)
+                        return train_history, val_history
+
                 global_step += 1
         return train_history, val_history
