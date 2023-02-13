@@ -125,10 +125,10 @@ class SoftmaxModel:
 
         batch_size = X.shape[0]
         delta = outputs - targets
-        dw2 = np.dot(self.hidden_layer_output[-1].T, delta)
+        dw2 = np.dot(self.layer_output[-1].T, delta)
 
 
-        sigmoid = 1/(1+np.exp(-self.z[-1]))
+        sigmoid = 1/(1+np.exp(-self.z_values[-1]))
         der_sig = sigmoid*(1-sigmoid)
         delta1 = np.dot(delta, self.ws[-1].T)*der_sig
 
