@@ -1,9 +1,9 @@
-PWD /home/abasin/Documents/NTNU/(8) Vår 2023/dataSyn/Ass2/rapport
+PWD /home/abasin/Documents/NTNU/(8) Vår 2023/dataSyn/øving2/-ving2-Datasyn/rapport
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/abasin/Documents/NTNU/(8) Vår 2023/dataSyn/Ass2/rapport/rapport_latex.tex
+INPUT /home/abasin/Documents/NTNU/(8) Vår 2023/dataSyn/øving2/-ving2-Datasyn/rapport/rapport_latex.tex
 OUTPUT rapport_latex.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -162,8 +162,15 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT ./task2c_train_loss.png
+INPUT ./task2c_train_loss.png
+INPUT task2c_train_loss.png
+INPUT ./task2c_train_loss.png
 OUTPUT rapport_latex.pdf
+INPUT ./task2c_train_loss.png
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT rapport_latex.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
