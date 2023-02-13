@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.1.11)  10 FEB 2023 10:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.1.11)  13 FEB 2023 08:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -120,19 +120,22 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-)) (./rapport_latex.aux) ) 
-Here is how much of TeX's memory you used:
- 2661 strings out of 478287
- 43530 string characters out of 5849289
- 347507 words of memory out of 5000000
- 20883 multiletter control sequences out of 15000+600000
- 469259 words of font info for 28 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 55i,1n,62p,285b,43s stack positions out of 5000i,500n,10000p,200000b,80000s
+)) [1
 
-No pages of output.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./rapport_latex.aux) ) 
+Here is how much of TeX's memory you used:
+ 2669 strings out of 478287
+ 43630 string characters out of 5849289
+ 348498 words of memory out of 5000000
+ 20887 multiletter control sequences out of 15000+600000
+ 470469 words of font info for 32 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 55i,5n,62p,285b,115s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on rapport_latex.pdf (1 page, 27230 bytes).
 PDF statistics:
- 0 PDF objects out of 1000 (max. 8388607)
+ 18 PDF objects out of 1000 (max. 8388607)
+ 10 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

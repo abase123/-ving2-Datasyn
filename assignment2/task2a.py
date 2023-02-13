@@ -17,6 +17,8 @@ def pre_process_images(X: np.ndarray):
     
     X_mean=np.mean(X)
     X_std=np.std(X)
+    print(X_mean)
+    print(X_std)
     bias=np.ones((X.shape[0],1))
     X_norm= (X-X_mean)/(X_std)
 
