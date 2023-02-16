@@ -52,12 +52,12 @@ class SoftmaxTrainer(BaseTrainer):
         # TODO: Implement this function (task 2c)
 
         output=self.model.forward(X_batch)
+        
         self.model.backward(X_batch,output,Y_batch)
-        
-        self.model.ws[0]-= self.learning_rate*self.model.grads[0]
-    
-        self.model.ws[1]-=self.learning_rate*self.model.grads[1]
-        
+        count=0
+        for w in self.model.ws:
+            w-= self.learning_rate*self.model.grads[count]
+            count+=1;
         loss = cross_entropy_loss(Y_batch, output)  # sol
 
         return loss
