@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1676278471 "/home/abasin/Documents/NTNU/(8) Vår 2023/dataSyn/øving2/-ving2-Datasyn/rapport/rapport_latex.tex" "rapport_latex.pdf" "rapport_latex" 1676278472
+["pdflatex"] 1676551269 "/home/abasin/Documents/NTNU/(8) Vår 2023/dataSyn/øving2/-ving2-Datasyn/rapport/rapport_latex.tex" "rapport_latex.pdf" "rapport_latex" 1676551269
   "/etc/texmf/web2c/texmf.cnf" 1662549119 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/abasin/Documents/NTNU/(8) Vår 2023/dataSyn/øving2/-ving2-Datasyn/rapport/rapport_latex.tex" 1676278471 1014 0f74439f3f3419667fb3226f4af84476 ""
+  "/home/abasin/Documents/NTNU/(8) Vår 2023/dataSyn/øving2/-ving2-Datasyn/rapport/rapport_latex.tex" 1676551269 1303 a59f6c536b345069f3c07dd05d91c085 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
@@ -31,9 +31,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1673431836 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1673431863 2797530 e5e4d83345ac5c5fa77c4849f0e78b23 ""
-  "rapport_latex.aux" 1676278472 220 39a78670a91b07e6404dd3d63855a6e4 "pdflatex"
-  "rapport_latex.tex" 1676278471 1014 0f74439f3f3419667fb3226f4af84476 ""
-  "task2c_train_loss.png" 1676276958 204031 eb828b0c8f5b86161287a5fe95f33821 ""
+  "rapport_latex.aux" 1676551269 220 39a78670a91b07e6404dd3d63855a6e4 "pdflatex"
+  "rapport_latex.tex" 1676551269 1303 a59f6c536b345069f3c07dd05d91c085 ""
+  "task2c_train_loss.png" 1676550326 204031 eb828b0c8f5b86161287a5fe95f33821 ""
   (generated)
   "rapport_latex.aux"
   "rapport_latex.log"
